@@ -927,6 +927,7 @@ def train_model(
     metadata_tags,
     metadata_title,
     # Flux1
+    use_chroma,
     flux1_cache_text_encoder_outputs,
     flux1_cache_text_encoder_outputs_to_disk,
     ae,
@@ -1761,6 +1762,7 @@ def train_model(
         "blocks_to_swap": blocks_to_swap if flux1_checkbox or sd3_checkbox else None,
         "single_blocks_to_swap": single_blocks_to_swap if flux1_checkbox else None,
         "double_blocks_to_swap": double_blocks_to_swap if flux1_checkbox else None,
+        "model_type": "chroma" if use_chroma else None,
     }
 
     # Given dictionary `config_toml_data`
@@ -2974,6 +2976,7 @@ def lora_tab(
             metadata.metadata_tags,
             metadata.metadata_title,
             # Flux1 parameters
+            flux1_training.use_chroma,
             flux1_training.flux1_cache_text_encoder_outputs,
             flux1_training.flux1_cache_text_encoder_outputs_to_disk,
             flux1_training.ae,

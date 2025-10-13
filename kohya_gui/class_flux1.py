@@ -127,6 +127,12 @@ class flux1Training:
                         info="Split mode for Flux1",
                         interactive=True,
                     )
+                    self.use_chroma = gr.Checkbox(
+                        label="Enable Chroma Support",
+                        value=self.config.get("flux1.use_chroma", False),
+                        info="Adds the '--model_type chroma' parameter to the training command.",
+                        interactive=True,
+                    )
                     self.train_blocks = gr.Dropdown(
                         label="Train Blocks",
                         choices=["all", "double", "single"],
