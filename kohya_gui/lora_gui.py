@@ -264,6 +264,7 @@ def save_configuration(
     metadata_tags,
     metadata_title,
     # Flux1
+    use_chroma,
     flux1_cache_text_encoder_outputs,
     flux1_cache_text_encoder_outputs_to_disk,
     ae,
@@ -550,6 +551,7 @@ def open_configuration(
     metadata_tags,
     metadata_title,
     # Flux1
+    use_chroma,
     flux1_cache_text_encoder_outputs,
     flux1_cache_text_encoder_outputs_to_disk,
     ae,
@@ -1259,7 +1261,7 @@ def train_model(
         mixed_precision=mixed_precision,
         extra_accelerate_launch_args=extra_accelerate_launch_args,
     )
-
+        
     if sdxl:
         run_cmd.append(rf"{scriptdir}/sd-scripts/sdxl_train_network.py")
     elif flux1_checkbox:
@@ -1347,7 +1349,7 @@ def train_model(
 
         for key, value in kohya_lora_vars.items():
             if value:
-                network_args += f" {key}={value}"
+                network_args += f" {key}={value}"    
 
     if LoRA_type == "Flux1 OFT":
         # Add a list of supported network arguments for Flux1 OFT below when supported
