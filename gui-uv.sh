@@ -51,5 +51,5 @@ if [[ "$uv_quiet" == "--quiet" ]]; then
   echo "Notice: uv will run in quiet mode. No indication of the uv module download and install process will be displayed."
 fi
 
-git submodule update --init --recursive
+git submodule update --init --remote --recursive
 uv run $uv_quiet kohya_gui.py --noverify "${args[@]}"
